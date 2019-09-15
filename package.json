@@ -1,0 +1,54 @@
+{
+  "name": "rpi-interface",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve:api": "webpack --config webpack.api.config.js --mode=development",
+    "serve:app": "webpack-dev-server --config webpack.app.config.js --mode=development",
+    "lint:api": "npm run lint:api:code",
+    "lint:api:code": "tslint src/api/**/*.ts --format msbuild",
+    "build:api": "webpack --config webpack.api.config.js --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "gitlab@rpi:scipper/rpi-interface.git"
+  },
+  "author": "Steffen Kowalski",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/common": "8.2.6",
+    "@angular/compiler": "8.2.6",
+    "@angular/core": "8.2.6",
+    "@angular/platform-browser": "8.2.6",
+    "@angular/platform-browser-dynamic": "8.2.6",
+    "body-parser": "1.19.0",
+    "core-js": "3.2.1",
+    "express": "4.17.1",
+    "multer": "1.4.2",
+    "reflect-metadata": "0.1.13",
+    "routing-controllers": "0.7.7",
+    "rxjs": "6.5.3",
+    "zone.js": "0.10.2"
+  },
+  "devDependencies": {
+    "@types/body-parser": "1.17.1",
+    "@types/express": "4.17.1",
+    "@types/multer": "1.3.9",
+    "@types/node": "12.7.5",
+    "clean-webpack-plugin": "3.0.0",
+    "cors": "2.8.5",
+    "kcors": "2.2.2",
+    "koa-bodyparser": "4.2.1",
+    "license-webpack-plugin": "2.1.2",
+    "nodemon-webpack-plugin": "4.1.1",
+    "ts-loader": "6.1.0",
+    "tslint": "5.20.0",
+    "typescript": "3.6.3",
+    "uglifyjs-webpack-plugin": "2.2.0",
+    "webpack": "4.40.2",
+    "webpack-cli": "3.3.8",
+    "webpack-dev-server": "3.8.0",
+    "yargs": "14.0.0"
+  }
+}
