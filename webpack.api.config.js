@@ -41,7 +41,7 @@ module.exports = {
   output: {
     filename: prod ? "[name].bundle.[contenthash].js" : "[name].bundle.js",
     chunkFilename: prod ? "[id].bundle.[contenthash].js" : "[id].bundle.js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "dist-api")
   },
 
   mode: prod ? "production" : "development",

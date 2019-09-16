@@ -11,6 +11,7 @@
     "strictNullChecks": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
+    "skipLibCheck": true,
     "typeRoots": [
       "./node_modules/@types"
     ],
