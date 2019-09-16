@@ -10,6 +10,12 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 let prod = yargs.mode === "production";
 let plugins = [];
+let conf;
+if(prod) {
+  conf = require("./config.prod");
+} else {
+  conf = require("./config.dev");
+}
 
 if(!prod) {
   plugins.push(new webpack.HotModuleReplacementPlugin());
@@ -126,6 +132,16 @@ if(prod) {
       }
     })
   ];
+} else {
+  devServer.proxy = {
+    [conf.proxy.path + "/**"]: {
+      target: conf.proxy.target,
+      secure: false,
+      changeOrigin: conf.proxy.changeOrigin,
+      cookieDomainRewrite: true,
+      ws: true
+    }
+  };
 }
 
 module.exports = {
