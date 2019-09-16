@@ -1,0 +1,53 @@
+@import 'colors';
+
+input {
+  &[type="checkbox"] {
+    height: 0;
+    width: 0;
+    float: left;
+
+    & + label {
+      cursor: pointer;
+      display: inline-block;
+      width: 60px;
+      height: 30px;
+      background-color: $rpi-grey-100;
+      border-radius: 15px;
+      position: relative;
+      border: 2px solid $rpi-transparent;
+
+      &::before {
+        content: " ";
+        display: inline-block;
+        position: absolute;
+        height: 26px;
+        width: 26px;
+        top: 0;
+        left: 0;
+        border-radius: 100%;
+        background-color: $rpi-grey-300;
+        transition: all .2s;
+      }
+    }
+
+    &:focus {
+      & + label {
+        border: 2px solid $rpi-grey-a700;
+      }
+    }
+
+    &:checked + label {
+      &::before {
+        left: 30px;
+        background-color: $rpi-grey-a700;
+      }
+    }
+    &:not(:checked) {
+      &:focus {
+        & + label {
+          border: 2px solid $rpi-grey-300;
+        }
+      }
+    }
+  }
+}

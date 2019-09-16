@@ -7,6 +7,7 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const {AngularCompilerPlugin} = require("@ngtools/webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 let prod = yargs.mode === "production";
 let plugins = [];
@@ -78,6 +79,11 @@ let devServer = {
   }
 };
 
+const cssLoaderOptions = {
+  sourceMap: !prod,
+  url: true
+};
+
 const optimization = {
   runtimeChunk: "single",
   splitChunks: {
@@ -130,7 +136,8 @@ if(prod) {
           comments: false
         }
       }
-    })
+    }),
+    new OptimizeCSSAssetsPlugin({})
   ];
 } else {
   devServer.proxy = {
@@ -191,7 +198,31 @@ module.exports = {
       test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
       loader: "@ngtools/webpack"
     }, {
-      test: /\.scss/,
+      test: /(?<!\.component)\.scss$/,
+      use: [
+        {
+          loader: prod ? MiniCssExtractPlugin.loader : "style-loader"
+        },
+        {
+          loader: "cache-loader"
+        },
+        {
+          loader: "css-loader",
+          options: cssLoaderOptions
+        },
+        {
+          loader: "fast-sass-loader",
+          options: {
+            includePaths: [
+              path.resolve(__dirname, "node_modules"),
+              path.resolve(__dirname, "src"),
+              path.resolve(__dirname, "src/assets/styles")
+            ]
+          }
+        }
+      ]
+    }, {
+      test: /\.component\.scss/,
       use: [{
         loader: "raw-loader"
       }, {

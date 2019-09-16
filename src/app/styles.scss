@@ -1,0 +1,22 @@
+@import 'reset';
+@import 'input';
+@import 'colors';
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: monospace;
+  font-size: 18px;
+}
+
+body {
+  min-height: 100%;
+  background-color: $rpi-white;
+  color: $rpi-grey-500;
+}
