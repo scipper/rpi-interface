@@ -195,36 +195,25 @@ module.exports = {
         system: true
       }
     }, {
+      enforce: 'pre',
+      test: /\.js$/,
+      loader: 'source-map-loader',
+      exclude: [
+        /\.ngfactory\.js$/,
+        /\.ngstyle\.js$/
+      ]
+    }, {
       test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
       loader: "@ngtools/webpack"
     }, {
       test: /(?<!\.component)\.scss$/,
-      use: [
-        {
-          loader: prod ? MiniCssExtractPlugin.loader : "style-loader"
-        },
-        {
-          loader: "cache-loader"
-        },
-        {
-          loader: "css-loader",
-          options: cssLoaderOptions
-        },
-        {
-          loader: "fast-sass-loader",
-          options: {
-            includePaths: [
-              path.resolve(__dirname, "node_modules"),
-              path.resolve(__dirname, "src"),
-              path.resolve(__dirname, "src/assets/styles")
-            ]
-          }
-        }
-      ]
-    }, {
-      test: /\.component\.scss/,
       use: [{
-        loader: "raw-loader"
+        loader: prod ? MiniCssExtractPlugin.loader : "style-loader"
+      }, {
+        loader: "cache-loader"
+      }, {
+        loader: "css-loader",
+        options: cssLoaderOptions
       }, {
         loader: "fast-sass-loader",
         options: {
@@ -233,6 +222,22 @@ module.exports = {
             path.resolve(__dirname, "src"),
             path.resolve(__dirname, "src/assets/styles")
           ]
+        }
+      }]
+    }, {
+      test: /\.component\.scss/,
+      use: [{
+        loader: "raw-loader"
+      }, {
+        loader: "sass-loader",
+        options: {
+          sassOptions: {
+            includePaths: [
+              path.resolve(__dirname, "node_modules"),
+              path.resolve(__dirname, "src"),
+              path.resolve(__dirname, "src/assets/styles")
+            ]
+          }
         }
       }]
     }, {
