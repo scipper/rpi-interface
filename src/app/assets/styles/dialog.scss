@@ -1,0 +1,74 @@
+@import './colors';
+
+.rpi-dialog {
+  width: 392px;
+  height: 403px;
+  margin: 40px;
+  position: relative;
+  overflow: hidden;
+
+  .top,
+  .left,
+  .content,
+  .right,
+  .bottom {
+    position: absolute;
+    display: inline-block;
+  }
+
+  .top {
+    background: url('~assets/images/dialog_top_border.png') center 0 no-repeat transparent;
+    width: 319px;
+    height: 28px;
+    left: 31px;
+    top: 0;
+  }
+
+  .left {
+    background: url('~assets/images/dialog_left_border.png') -3px center no-repeat transparent;
+    height: 404px;
+    width: 31px;
+    left: 0;
+    top: 0;
+  }
+
+  .content {
+    background-color: transparentize($rpi-black, .25);
+    height: 335px;
+    width: 319px;
+    left: 31px;
+    top: 28px;
+  }
+
+  .right {
+    background: url('~assets/images/dialog_right_border.png') 0 center no-repeat transparent;
+    height: 401px;
+    width: 42px;
+    right: 0;
+    top: 0;
+  }
+
+  .bottom {
+    background: url('~assets/images/dialog_bottom_border.png') 0 0 no-repeat transparent;
+    width: 319px;
+    height: 37px;
+    left: 31px;
+    bottom: 3px;
+  }
+
+  .close-button.fa.fa-times {
+    position: absolute;
+    top: 10px;
+    right: -10px;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $rpi-purple-600;
+    }
+  }
+
+}
