@@ -1,5 +1,5 @@
-import {HttpClient} from "@angular/common/http";
 import {Component, OnInit} from "@angular/core";
+import {HomeService} from "../../api-interface/services/home.service";
 
 @Component({
   selector: "app-root",
@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
 
   welcomeMessage: string;
 
-  constructor(protected httpClient: HttpClient) {
+  constructor(protected homeService: HomeService) {
     this.welcomeMessage = "";
   }
 
@@ -18,8 +18,8 @@ export class AppComponent implements OnInit {
    *
    */
   ngOnInit(): void {
-    this.httpClient.get<string>("api/")
-      .subscribe((response) => {
+    this.homeService.homeControllerGetWelcomeMessage()
+      .subscribe((response: string) => {
         this.welcomeMessage = response;
       })
   }

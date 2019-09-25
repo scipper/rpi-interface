@@ -1,0 +1,7 @@
+{
+  "$schema": "./node_modules/ng-swagger-gen/ng-swagger-gen-schema.json",
+  "swagger": "will_not_be_used",
+  "prefix": "Api",
+  "ignoreUnusedModels": false,
+  "sortParams": "desc"
+}

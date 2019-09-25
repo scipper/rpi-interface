@@ -1,0 +1,1 @@
+{"components":{"schemas":{}},"info":{"title":"","version":"1.0.0"},"openapi":"3.0.0","paths":{"/api/home":{"get":{"operationId":"HomeController.getWelcomeMessage","responses":{"200":{"content":{"application/json":{}},"description":"Successful response"}},"summary":"Get welcome message","tags":["Home"]}}}}

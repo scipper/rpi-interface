@@ -1,9 +1,9 @@
 import {Get, JsonController} from "routing-controllers";
 
-@JsonController()
+@JsonController("home")
 export class HomeController {
 
-  @Get("/")
+  @Get("")
   getWelcomeMessage() {
     return "Raspberry Pi interface";
   }
